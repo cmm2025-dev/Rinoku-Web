@@ -13,10 +13,16 @@ export default function Footer() {
             </span>
           </p>
         </div>
-        <div className="border-t border-rk-ivory/15 pt-6">
+        <div className="flex flex-col gap-4 border-t border-rk-ivory/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="rk-eyebrow text-[11px] text-rk-ivory/50">
             © 2026 RINOKU. Identidad en desarrollo.
           </p>
+          <a
+            href="mailto:contacto@rinoku.cl"
+            className="text-[13px] text-rk-ivory/70 transition-colors hover:text-rk-ivory"
+          >
+            contacto@rinoku.cl
+          </a>
         </div>
       </div>
     </footer>

@@ -6,6 +6,7 @@ import Manifiesto from "@/components/Manifiesto";
 import Architecture from "@/components/sections/Architecture";
 import UseCases from "@/components/sections/UseCases";
 import Solutions from "@/components/sections/Solutions";
+import Contacto from "@/components/sections/Contacto";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Architecture />
         <UseCases />
         <Solutions />
+        <Contacto />
       </main>
       <Footer />
     </>
