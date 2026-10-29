@@ -1,64 +1,72 @@
 import Reveal from "../Reveal";
-import Badge from "../ui/Badge";
-import FeatureCard from "../ui/FeatureCard";
-import SectionTitle from "../ui/SectionTitle";
 
 const STORIES = [
   {
     sector: "Municipios",
     story:
-      "La presencia reiterada de estiércol de caballos puede anticipar el inicio de botaderos clandestinos.",
+      "La presencia reiterada de ciertas señales en la vía pública puede anticipar el inicio de microbasurales antes de que se consoliden.",
   },
   {
-    sector: "Minería",
+    sector: "Industria / Minería",
     story:
-      "La acumulación de roca en determinadas condiciones puede anticipar un atascamiento de buzones o correas transportadoras.",
+      "La acumulación de material en condiciones específicas puede anticipar atascamientos en buzones o correas transportadoras.",
   },
   {
-    sector: "Hospitales",
+    sector: "Salud / Instituciones",
     story:
-      "La verificación biométrica permite certificar presencia sin depender de teléfonos móviles.",
+      "La verificación biométrica permite certificar presencia de forma confiable, sin depender de teléfonos móviles.",
   },
 ];
 
-const EMERGING_SECTORS = ["Industria", "Puertos", "Gobierno"];
+const SECTORS = ["Gobierno", "Puertos", "Seguridad", "Operaciones"];
 
 export default function UseCases() {
   return (
-    <section id="casos-de-uso" className="border-t border-kora-border px-6 py-32">
-      <div className="mx-auto max-w-4xl">
+    <section
+      id="casos-de-uso"
+      className="border-t border-rk-line bg-rk-ivory px-6 py-28"
+    >
+      <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionTitle
-            eyebrow="Casos de Uso"
-            title="No mostramos productos. Mostramos historias."
-          />
+          <p className="rk-eyebrow text-[13px] text-rk-terracotta">
+            Casos de uso
+          </p>
+          <h2 className="mt-5 max-w-2xl text-3xl text-rk-graphite sm:text-4xl">
+            Una misma lógica, aplicada a problemas reales.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-rk-muted">
+            Escenarios de referencia que ilustran el método. No representan, por sí
+            mismos, implementaciones certificadas ni resultados garantizados.
+          </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-rk-line bg-rk-line sm:grid-cols-3">
           {STORIES.map((item, i) => (
             <Reveal key={item.sector} delay={i * 0.1}>
-              <FeatureCard eyebrow={item.sector} description={item.story} />
+              <div className="h-full bg-rk-paper p-7">
+                <p className="rk-eyebrow text-[11px] text-rk-green-deep">
+                  {item.sector}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-rk-ink">
+                  {item.story}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={0.3}>
-          <p className="mt-6 text-xs italic text-kora-muted">
-            Estos ejemplos representan &ldquo;Skills Operacionales&rdquo;: patrones
-            detectados a partir del conocimiento operacional de cada
-            organización.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.4}>
-          <div className="mt-16 flex flex-wrap items-center gap-3 border-t border-kora-border pt-10">
-            <span className="text-xs uppercase tracking-[0.2em] text-kora-muted">
-              Aplicando el mismo proceso de ingeniería en
+          <div className="mt-12 flex flex-wrap items-center gap-3">
+            <span className="rk-eyebrow text-[11px] text-rk-muted">
+              El mismo método aplica en
             </span>
-            {EMERGING_SECTORS.map((sector) => (
-              <Badge key={sector} className="px-4 text-xs text-kora-text">
-                {sector}
-              </Badge>
+            {SECTORS.map((s) => (
+              <span
+                key={s}
+                className="rounded-md border border-rk-line bg-rk-paper px-3.5 py-1.5 text-[13px] text-rk-ink"
+              >
+                {s}
+              </span>
             ))}
           </div>
         </Reveal>

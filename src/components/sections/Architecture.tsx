@@ -1,77 +1,54 @@
 import Reveal from "../Reveal";
-import Badge from "../ui/Badge";
-import Panel from "../ui/Panel";
-import SectionTitle from "../ui/SectionTitle";
 
 const LAYERS = [
-  "Infraestructura",
-  "Captura",
-  "Normalización",
-  "Correlación",
-  "Patrones",
-  "IA",
-  "Automatización",
-  "Visualización",
-  "Operación",
-];
-
-const BASE_INFRA = [
-  "LoRaWAN",
-  "IoT",
-  "IA",
-  "Drones",
-  "DAFR",
-  "Dock3",
-  "NOC",
-  "LTE / 5G",
-  "Video",
-  "Sensores",
-  "APIs",
-  "Automatización",
-  "Digital Twins",
+  { name: "Captura", note: "Sensores, video, eventos, identidad y sistemas externos" },
+  { name: "Normalización", note: "Datos consistentes, con unidades y contexto" },
+  { name: "Correlación", note: "Relación entre señales y fuentes" },
+  { name: "Reglas / Analítica", note: "Lógica, umbrales y análisis" },
+  { name: "Decisión", note: "Prioridades, alertas, asistencia a decisiones" },
+  { name: "Acción", note: "Despacho, automatización y verificación" },
+  { name: "Evidencia", note: "Registro trazable y auditable" },
 ];
 
 export default function Architecture() {
   return (
-    <section id="arquitectura" className="border-t border-kora-border px-6 py-32">
-      <div className="mx-auto max-w-4xl">
+    <section id="arquitectura" className="border-t border-rk-line px-6 py-28">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionTitle
-            eyebrow="Arquitectura"
-            title="La plataforma se organiza por capas. Cada módulo comparte esta arquitectura."
-          />
+          <p className="rk-eyebrow text-[13px] text-rk-terracotta">
+            Arquitectura
+          </p>
+          <h2 className="mt-5 max-w-2xl text-3xl text-rk-graphite sm:text-4xl">
+            Capas reutilizables, con trazabilidad de principio a fin.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-rk-muted">
+            Una arquitectura propuesta y modular, compartida entre soluciones.
+            Cada capa deja registro de lo que observa, decide y ejecuta.
+          </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mt-16 flex flex-col items-center">
+          <ol className="mt-14 overflow-hidden rounded-xl border border-rk-line">
             {LAYERS.map((layer, i) => (
-              <div key={layer} className="flex w-full flex-col items-center">
-                <Panel className="w-full max-w-md bg-kora-panel py-4 text-center">
-                  <span className="font-mono text-sm tracking-wide text-kora-text">
-                    {layer}
-                  </span>
-                </Panel>
-                {i < LAYERS.length - 1 ? (
-                  <span className="my-1 h-6 w-px bg-kora-border" aria-hidden="true" />
-                ) : null}
-              </div>
+              <li
+                key={layer.name}
+                className="flex items-baseline gap-5 border-b border-rk-line bg-rk-paper px-6 py-5 last:border-b-0 even:bg-rk-ivory/40"
+              >
+                <span className="rk-data w-8 shrink-0 text-sm text-rk-green-deep">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="w-40 shrink-0 font-display text-lg text-rk-graphite">
+                  {layer.name}
+                </span>
+                <span className="text-[15px] leading-relaxed text-rk-muted">
+                  {layer.note}
+                </span>
+              </li>
             ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <div className="mt-20 border-t border-kora-border pt-12">
-            <p className="text-sm uppercase tracking-[0.2em] text-kora-muted">
-              Infraestructura base — reutilizada entre industrias
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {BASE_INFRA.map((tech) => (
-                <Badge key={tech} className="px-4 font-mono text-xs text-kora-text">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </div>
+          </ol>
+          <p className="rk-eyebrow mt-5 text-[11px] text-rk-muted">
+            Arquitectura propuesta · modular · se adapta a cada solución
+          </p>
         </Reveal>
       </div>
     </section>

@@ -2,16 +2,22 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-kora-border px-6 py-16">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-        <Logo size="sm" />
-        <p className="max-w-md text-sm text-kora-muted">
-          Una sola infraestructura. Múltiples soluciones. Un solo lenguaje de
-          ingeniería.
-        </p>
-        <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-kora-muted/70">
-          © 2026 KORA — Redes Ingeniería SPA
-        </p>
+    <footer className="bg-rk-graphite px-6 py-16 text-rk-ivory">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8">
+        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <Logo size="sm" tone="ivory" />
+          <p className="max-w-sm text-[15px] leading-relaxed text-rk-ivory/70">
+            Información confiable. Decisiones eficientes.
+            <span className="block text-rk-ivory/50">
+              Tecnología con principios.
+            </span>
+          </p>
+        </div>
+        <div className="border-t border-rk-ivory/15 pt-6">
+          <p className="rk-eyebrow text-[11px] text-rk-ivory/50">
+            © 2026 RINOKU. Identidad en desarrollo.
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -1,112 +1,101 @@
 import Reveal from "../Reveal";
-import Panel from "../ui/Panel";
-import ProductCard from "../ui/ProductCard";
-import SectionTitle from "../ui/SectionTitle";
 
 const SOLUTIONS = [
   {
-    name: "KORA Vigía",
-    code: "VIGÍA",
-    eyebrow: "Justicia y cumplimiento",
-    tagline: "Presencia verificada. Evidencia confiable.",
+    name: "RINOKU CAD",
+    focus: "Operación y respuesta",
     description:
-      "Infraestructura de confianza judicial para arresto domiciliario: verifica presencia biométrica en los horarios decretados por el tribunal y genera evidencia con cadena de custodia de extremo a extremo.",
-    href: "https://kora-vigia.vercel.app",
-    features: ["Biometría autónoma", "Cadena de custodia", "Alertas operacionales"],
-    icon: "shield",
+      "Coordinación, despacho y gestión de eventos para operaciones que exigen respuesta oportuna y trazable.",
+    href: null,
+    status: "En desarrollo",
   },
   {
-    name: "KORA SFI",
-    code: "SFI",
-    eyebrow: "Fiscalización inteligente",
-    tagline: "La certeza de estar, sin supervisión constante.",
+    name: "RINOKU SFI",
+    focus: "Identidad y evidencia",
     description:
-      "Sistema de Fiscalización Inteligente para licencias médicas, arresto domiciliario y medidas de protección, con verificación biométrica autónoma y operación sin smartphone.",
+      "Verificación de identidad y presencia mediante soluciones biométricas, con registro verificable.",
     href: "https://sfi-rispa.vercel.app",
-    features: ["Operación sin smartphone", "Verificación remota", "Monitoreo continuo"],
-    icon: "signal",
+    status: "Ver solución",
+  },
+  {
+    name: "RINOKU VIGÍA",
+    focus: "Control y registro",
+    description:
+      "Seguimiento, verificación y trazabilidad para escenarios de vigilancia y cumplimiento.",
+    href: "https://kora-vigia.vercel.app",
+    status: "Ver solución",
+  },
+  {
+    name: "RINOKU IoT",
+    focus: "Captura y conectividad",
+    description:
+      "Conexión de sensores, dispositivos y eventos del entorno físico como base de captura.",
+    href: null,
+    status: "En desarrollo",
   },
 ];
 
-function ProductIcon({ type }: { type: string }) {
-  if (type === "shield") {
-    return (
-      <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
-        <path
-          d="M24 5 39 11v10c0 10.3-6.2 18.2-15 22-8.8-3.8-15-11.7-15-22V11L24 5Z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="m17 24 4.5 4.5L31.5 18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
-      <circle cx="24" cy="24" r="4" fill="currentColor" />
-      <path
-        d="M15.5 32.5a12 12 0 0 1 0-17M32.5 15.5a12 12 0 0 1 0 17M10 38a20 20 0 0 1 0-28M38 10a20 20 0 0 1 0 28"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 export default function Solutions() {
   return (
-    <section
-      id="soluciones"
-      className="relative overflow-hidden border-t border-kora-border px-6 py-32"
-    >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,220,190,0.09),transparent_42%)]" />
-
-      <div className="relative mx-auto max-w-6xl">
+    <section id="soluciones" className="border-t border-rk-line px-6 py-28">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionTitle
-            eyebrow="Soluciones KORA"
-            title="Una infraestructura común. Aplicaciones especializadas."
-            description="Cada solución conserva el mismo núcleo tecnológico, visual y operacional de KORA, adaptado a un contexto de misión específico."
-          />
+          <p className="rk-eyebrow text-[13px] text-rk-terracotta">Soluciones</p>
+          <h2 className="mt-5 max-w-2xl text-3xl text-rk-graphite sm:text-4xl">
+            Una misma filosofía. Soluciones para realidades distintas.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-rk-muted">
+            Identidad, operaciones, verificación y conexión con el entorno,
+            concebidas para trabajar con rigor y crecer de forma modular.
+          </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {SOLUTIONS.map((solution, i) => (
-            <Reveal key={solution.name} delay={i * 0.1}>
-              <ProductCard
-                name={solution.name}
-                code={solution.code}
-                eyebrow={solution.eyebrow}
-                tagline={solution.tagline}
-                description={solution.description}
-                features={solution.features}
-                href={solution.href}
-                icon={<ProductIcon type={solution.icon} />}
-              />
-            </Reveal>
-          ))}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          {SOLUTIONS.map((s, i) => {
+            const Card = s.href ? "a" : "div";
+            return (
+              <Reveal key={s.name} delay={(i % 2) * 0.1}>
+                <Card
+                  {...(s.href
+                    ? { href: s.href, target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className={`group flex h-full flex-col rounded-xl border border-rk-line bg-rk-paper p-7 transition-colors ${
+                    s.href ? "hover:border-rk-terracotta" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-xl text-rk-graphite">
+                      {s.name}
+                    </span>
+                    <span className="rk-eyebrow text-[10px] text-rk-green-deep">
+                      {s.focus}
+                    </span>
+                  </div>
+                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-rk-muted">
+                    {s.description}
+                  </p>
+                  <span
+                    className={`rk-eyebrow mt-6 text-[11px] ${
+                      s.href
+                        ? "text-rk-terracotta group-hover:text-rk-terracotta-deep"
+                        : "text-rk-muted"
+                    }`}
+                  >
+                    {s.status}
+                    {s.href ? " →" : ""}
+                  </span>
+                </Card>
+              </Reveal>
+            );
+          })}
         </div>
 
-        <Reveal delay={0.2}>
-          <Panel className="mt-8 flex flex-col gap-4 px-6 py-5 text-sm text-kora-muted sm:flex-row sm:items-center sm:justify-between">
-            <span className="uppercase tracking-[0.18em] text-kora-teal">
-              Núcleo compartido KORA
-            </span>
-            <span>
-              Identidad · Biometría · Evidencia · Comunicaciones · Automatización operacional
-            </span>
-          </Panel>
+        <Reveal delay={0.3}>
+          <p className="mt-8 max-w-2xl text-[13px] leading-relaxed text-rk-muted">
+            Estas definiciones son mensajes de posicionamiento. No implican que
+            todas las funcionalidades estén desarrolladas, certificadas o
+            disponibles comercialmente.
+          </p>
         </Reveal>
       </div>
     </section>

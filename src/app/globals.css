@@ -1,54 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* KORA brand palette */
-  --color-kora-black: #070909;
-  --color-kora-ink: #0a0f0f;
-  --color-kora-panel: #0f1515;
-  --color-kora-panel-raised: #131c1b;
-  --color-kora-border: rgba(180, 255, 245, 0.12);
-  --color-kora-border-strong: rgba(0, 208, 184, 0.34);
-  --color-kora-teal: #00d0b8;
-  --color-kora-teal-bright: #5fffe9;
-  --color-kora-deep: #007d70;
-  --color-kora-light: #e8fffb;
-  --color-kora-white: #ffffff;
-  --color-kora-text: #e5f0ee;
-  --color-kora-muted: #879b98;
-  --color-kora-success: #27ae60;
-  --color-kora-alert: #e67e22;
-  --color-kora-error: #e74c3c;
+  /* RINOKU brand palette v1.0 */
+  --color-rk-graphite: #303a36;
+  --color-rk-ivory: #f1e6d1;
+  --color-rk-terracotta: #a7442c;
+  --color-rk-terracotta-deep: #8e3726;
+  --color-rk-mustard: #b48b48;
+  --color-rk-green: #486658;
+  --color-rk-green-deep: #2f5947;
 
-  /* Shared spacing, surfaces and motion */
-  --kora-container: 1200px;
-  --kora-section-space: clamp(5rem, 10vw, 9rem);
-  --kora-radius-sm: 0.75rem;
-  --kora-radius-md: 1.25rem;
-  --kora-radius-lg: 2rem;
-  --kora-shadow-glow: 0 0 48px rgba(0, 208, 184, 0.14);
-  --kora-shadow-glow-strong: 0 0 72px rgba(0, 208, 184, 0.24);
-  --kora-transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* Neutrals */
+  --color-rk-paper: #faf7f0;
+  --color-rk-ink: #252c29;
+  --color-rk-muted: #5b625d;
+  --color-rk-line: #d3c9b9;
+  --color-rk-soft-terracotta: #f4e1d8;
+
+  /* Status */
+  --color-rk-success: #245e46;
+  --color-rk-warning: #806019;
+  --color-rk-danger: #9a3835;
 }
 
 @theme inline {
-  --color-kora-black: var(--color-kora-black);
-  --color-kora-ink: var(--color-kora-ink);
-  --color-kora-panel: var(--color-kora-panel);
-  --color-kora-panel-raised: var(--color-kora-panel-raised);
-  --color-kora-border: var(--color-kora-border);
-  --color-kora-border-strong: var(--color-kora-border-strong);
-  --color-kora-teal: var(--color-kora-teal);
-  --color-kora-teal-bright: var(--color-kora-teal-bright);
-  --color-kora-deep: var(--color-kora-deep);
-  --color-kora-light: var(--color-kora-light);
-  --color-kora-white: var(--color-kora-white);
-  --color-kora-text: var(--color-kora-text);
-  --color-kora-muted: var(--color-kora-muted);
-  --color-kora-success: var(--color-kora-success);
-  --color-kora-alert: var(--color-kora-alert);
-  --color-kora-error: var(--color-kora-error);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-rk-graphite: var(--color-rk-graphite);
+  --color-rk-ivory: var(--color-rk-ivory);
+  --color-rk-terracotta: var(--color-rk-terracotta);
+  --color-rk-terracotta-deep: var(--color-rk-terracotta-deep);
+  --color-rk-mustard: var(--color-rk-mustard);
+  --color-rk-green: var(--color-rk-green);
+  --color-rk-green-deep: var(--color-rk-green-deep);
+  --color-rk-paper: var(--color-rk-paper);
+  --color-rk-ink: var(--color-rk-ink);
+  --color-rk-muted: var(--color-rk-muted);
+  --color-rk-line: var(--color-rk-line);
+  --color-rk-soft-terracotta: var(--color-rk-soft-terracotta);
+  --color-rk-success: var(--color-rk-success);
+  --color-rk-warning: var(--color-rk-warning);
+  --color-rk-danger: var(--color-rk-danger);
+  --font-display: "Archivo Black", "Archivo", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 * {
@@ -57,90 +50,55 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--color-kora-black);
 }
 
 body {
-  margin: 0;
-  background:
-    radial-gradient(circle at 50% -10%, rgba(0, 208, 184, 0.08), transparent 34rem),
-    var(--color-kora-black);
-  color: var(--color-kora-text);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  text-rendering: optimizeLegibility;
-}
-
-a {
-  color: inherit;
+  background: var(--color-rk-paper);
+  color: var(--color-rk-ink);
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 ::selection {
-  background: var(--color-kora-teal);
-  color: var(--color-kora-black);
+  background: var(--color-rk-terracotta);
+  color: #ffffff;
 }
 
-.kora-container {
-  width: min(calc(100% - 2rem), var(--kora-container));
-  margin-inline: auto;
+h1,
+h2,
+h3,
+.rk-display {
+  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
 }
 
-.kora-section {
-  padding-block: var(--kora-section-space);
-}
-
-.kora-surface {
-  border: 1px solid var(--color-kora-border);
-  border-radius: var(--kora-radius-md);
-  background: linear-gradient(145deg, rgba(19, 28, 27, 0.92), rgba(8, 13, 13, 0.88));
-  box-shadow: var(--kora-shadow-glow);
-  backdrop-filter: blur(18px);
-}
-
-.kora-eyebrow {
-  color: var(--color-kora-teal-bright);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+.rk-eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.kora-focus-ring:focus-visible {
-  outline: 2px solid var(--color-kora-teal-bright);
-  outline-offset: 4px;
+.rk-data {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
 }
 
-@keyframes kora-pulse-ring {
-  0% { r: 24; opacity: 0.35; }
-  100% { r: 36; opacity: 0; }
-}
-
-@keyframes kora-pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
-}
-
-.kora-pulse-ring {
-  transform-origin: 40px 40px;
-  animation: kora-pulse-ring 2.5s ease-out infinite;
-}
-
-.kora-pulse-dot {
-  animation: kora-pulse-dot 2.5s ease-in-out infinite;
-}
-
-.kora-grid-bg {
+/* Subtle technical grid — retro-industrial drafting paper */
+.rk-grid {
   background-image:
-    linear-gradient(to right, rgba(224, 232, 240, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(224, 232, 240, 0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(to right, rgba(48, 58, 54, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 58, 54, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

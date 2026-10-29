@@ -1,28 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import Footer from "@/components/Footer";
-import Nav from "@/components/Nav";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "900"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
 export const metadata: Metadata = {
-  title: {
-    default: "KORA — Infraestructura para decisiones",
-    template: "%s — KORA",
-  },
+  title: "RINOKU — Información confiable. Decisiones eficientes.",
   description:
-    "Una plataforma abierta para integrar sensores, IA, drones, LoRaWAN, comunicaciones y automatización operacional.",
+    "RINOKU diseña e integra tecnología para transformar señales, datos y experiencias operacionales en conocimiento útil, decisiones responsables y acciones verificables.",
 };
 
 export default function RootLayout({
@@ -31,18 +13,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full bg-kora-black text-white">
-        <div className="flex min-h-screen flex-col">
-          <Nav />
-          <main id="contenido" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+    <html lang="es" className="h-full antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-rk-paper text-rk-ink">
+        {children}
       </body>
     </html>
   );
