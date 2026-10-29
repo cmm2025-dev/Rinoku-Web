@@ -22,16 +22,16 @@ const SOLUTIONS = [
     focus: "Operación y respuesta",
     description:
       "Coordinación, despacho y gestión de eventos para operaciones que exigen respuesta oportuna y trazable.",
-    href: null,
-    status: "En desarrollo",
+    href: "https://cad.rinoku.cl",
+    status: "Ver solución",
   },
   {
     name: "RINOKU Alertas",
     focus: "Monitoreo y notificación",
     description:
       "Detección y notificación de eventos en tiempo real, con escalamiento y registro trazable.",
-    href: null,
-    status: "En desarrollo",
+    href: "https://alertas.rinoku.cl",
+    status: "Ver solución",
   },
 ];
 
