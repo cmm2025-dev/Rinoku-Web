@@ -10,9 +10,9 @@
 | VIGÍA | `https://vigia.rinoku.cl` | `rinoku-vigia.vercel.app` | `cmm2025-dev/Rinoku-Vigia` | `rinoku-vigia` |
 | SFI | `https://sfi.rinoku.cl` | `rinoku-sfi.vercel.app` | `cmm2025-dev/Rinoku-SFI` | `rinoku-sfi` |
 | CAD | — (en desarrollo) | — | `rinoku-cad` (pendiente) | `rinoku-cad` (pendiente) |
-| Alertas | — (en desarrollo) | — | `rinoku-alerts` (pendiente) | `rinoku-alerts` (pendiente) |
+| Alertas | `https://alertas.rinoku.cl` | `rinoku-alertas.vercel.app` | `cmm2025-dev/Rinoku-Alertas` | `rinoku-alertas` |
 
-Navegación cruzada: el corporativo (sección **Soluciones**) enlaza a `vigia.rinoku.cl` y `sfi.rinoku.cl`; ambos productos vuelven al home `rinoku.cl` desde su logo/footer.
+Navegación cruzada: el corporativo (sección **Soluciones**) enlaza a `vigia.rinoku.cl` y `sfi.rinoku.cl`; los productos (incluido Alertas) vuelven al home `rinoku.cl` desde su logo/footer.
 
 ## 2. Flujo de despliegue
 
@@ -30,6 +30,7 @@ Todos los registros en **DNS only** (nube gris) — requisito para que Vercel em
 | CNAME | `www` | `e60450ef37491b93.vercel-dns-017.com` | DNS only |
 | CNAME | `vigia` | `760fa726539cf073.vercel-dns-017.com` | DNS only |
 | CNAME | `sfi` | `6851a42f1072cef0.vercel-dns-017.com` | DNS only |
+| CNAME | `alertas` | ver Vercel → proyecto `rinoku-alertas` → Settings → Domains | DNS only |
 
 - Nameservers en NIC Chile → Cloudflare (`zac.ns.cloudflare.com`, `dayana.ns.cloudflare.com`).
 - Cada dominio/subdominio debe estar agregado en su proyecto Vercel (Settings → Domains) para validar y recibir SSL.
@@ -38,7 +39,8 @@ Todos los registros en **DNS only** (nube gris) — requisito para que Vercel em
 ## 4. Pendientes
 
 - **Subdominios de producto**: si algún CNAME aún apunta al valor legacy `cname.vercel-dns.com`, actualizarlo al valor recomendado de la tabla (quita el aviso "DNS Change Recommended" de Vercel). Funciona igual con el legacy.
-- **CAD y Alertas**: crear repos/proyectos (`rinoku-cad`, `rinoku-alerts`) y subdominios `cad.rinoku.cl` / `alerts.rinoku.cl` cuando se desarrollen.
+- **CAD**: crear repo/proyecto (`rinoku-cad`) y subdominio `cad.rinoku.cl` cuando se desarrolle.
+- **Alertas**: completar en la tabla de DNS el valor CNAME exacto que muestra Vercel para `alertas.rinoku.cl` (Settings → Domains del proyecto `rinoku-alertas`).
 - **Correo `@rinoku.cl`**: no usar hasta configurar MX + SPF + DKIM + DMARC.
 - **Marca**: logo/isotipo vectorial definitivo, validación INAPI, textos legales (sin usar ® hasta registro concedido).
 
