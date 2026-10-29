@@ -32,15 +32,17 @@ export default function Architecture() {
             {LAYERS.map((layer, i) => (
               <li
                 key={layer.name}
-                className="flex items-baseline gap-5 border-b border-rk-line bg-rk-paper px-6 py-5 last:border-b-0 even:bg-rk-ivory/40"
+                className="flex flex-col gap-1.5 border-b border-rk-line bg-rk-paper px-6 py-5 last:border-b-0 even:bg-rk-ivory/40 sm:flex-row sm:items-baseline sm:gap-5"
               >
-                <span className="rk-data w-8 shrink-0 text-sm text-rk-green-deep">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="w-40 shrink-0 font-display text-lg text-rk-graphite">
-                  {layer.name}
-                </span>
-                <span className="text-[15px] leading-relaxed text-rk-muted">
+                <div className="flex items-baseline gap-4 sm:gap-5">
+                  <span className="rk-data w-8 shrink-0 text-sm text-rk-green-deep">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-lg text-rk-graphite sm:w-40 sm:shrink-0">
+                    {layer.name}
+                  </span>
+                </div>
+                <span className="pl-12 text-[15px] leading-relaxed text-rk-muted sm:pl-0">
                   {layer.note}
                 </span>
               </li>
