@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Hero from "@/components/sections/Hero";
 import Purpose from "@/components/sections/Purpose";
 import Filosofia from "@/components/sections/Filosofia";
 import Manifiesto from "@/components/Manifiesto";
@@ -12,11 +11,14 @@ export default function Home() {
   return (
     <>
       <Nav />
+      <h1 className="sr-only">
+        RINOKU — Información confiable. Decisiones eficientes.
+      </h1>
       <main className="flex-1">
-        <Hero />
+        {/* El canvas abre el sitio como hero; luego comienza la lectura */}
+        <Manifiesto />
         <Purpose />
         <Filosofia />
-        <Manifiesto />
         <Architecture />
         <UseCases />
         <Solutions />

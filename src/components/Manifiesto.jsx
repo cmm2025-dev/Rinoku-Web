@@ -248,7 +248,7 @@ export default function Manifiesto() {
   }, []);
 
   return (
-    <section ref={rootRef} className="rk-manifesto" id="manifiesto">
+    <section ref={rootRef} className="rk-manifesto" id="top">
       <canvas ref={netRef} className="net" aria-hidden="true" />
       <div className="scrim" aria-hidden="true" />
 
@@ -285,6 +285,11 @@ export default function Manifiesto() {
         ))}
       </div>
       <button className="ctrl" ref={ctrlRef} aria-label="Pausar o reanudar" />
+
+      <a className="scrollcue" href="#proposito" aria-label="Desplázate para comenzar">
+        Desplázate
+        <span aria-hidden="true">⌄</span>
+      </a>
 
       <style jsx>{`
         .rk-manifesto {
@@ -338,7 +343,15 @@ export default function Manifiesto() {
         .rk-manifesto.reduced .stage { height:auto; padding:22vh 0 12vh; }
         .rk-manifesto.reduced .scene { position:static; left:auto; right:auto; bottom:auto;
           opacity:1; transform:none; margin:0 1.9rem 2.6rem; max-width:26ch; }
-        .rk-manifesto.reduced .timeline, .rk-manifesto.reduced .ctrl { display:none; }
+        .scrollcue { position:absolute; left:50%; bottom:1.8vh; transform:translateX(-50%); z-index:6;
+          display:flex; flex-direction:column; align-items:center; gap:1px; text-decoration:none;
+          font-family:"IBM Plex Mono", monospace; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+        .scrollcue:hover { color:var(--terra); }
+        .scrollcue span { font-size:1rem; line-height:.8; animation:cue 1.9s ease-in-out infinite; }
+        @keyframes cue { 0%,100%{transform:translateY(0);opacity:.55} 50%{transform:translateY(3px);opacity:1} }
+
+        .rk-manifesto.reduced .timeline, .rk-manifesto.reduced .ctrl, .rk-manifesto.reduced .scrollcue { display:none; }
+        @media (prefers-reduced-motion: reduce) { .scrollcue span { animation:none; } }
       `}</style>
     </section>
   );
