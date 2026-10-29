@@ -1,30 +1,26 @@
 "use client";
 
 /*
-  KORA — Hero "Manifiesto / Visión"
+  RINOKU — "Manifiesto"
   --------------------------------------------------------------
-  Red neuronal que crece por escena (capturar → analizar → predecir →
-  optimizar → servir) y termina en una catarsis: la red estalla y la
-  marca KORA florece al centro. Auto-play tipo video, con timeline y pausa.
-
-  Integración (Next.js / Vercel):
-  - Client Component ("use client"). Ocupa 100vh (hero).
-  - Fuentes en tu layout (next/font recomendado): Space Grotesk + IBM Plex Mono.
-  - Estilos vía styled-jsx, scopeados a .kora-manifesto.
+  Constelación técnica que crece por escena (observar → comprender →
+  decidir → actuar) y cierra con la marca RINOKU. Auto-play con timeline
+  y pausa. Paleta RINOKU clara (papel / grafito / terracota).
+  Client Component; estilos scopeados a .rk-manifesto vía styled-jsx.
 */
 
 import { useEffect, useRef } from "react";
 
 const SCENES = [
-  { headline: <>De los datos,<br />inteligencia.</> },
-  { num: "01", tag: "Analizar", cond: "Si podemos capturar los datos,", cons: "podemos analizarlos." },
-  { num: "02", tag: "Predecir", cond: "Si podemos analizarlos,", cons: "podemos predecir comportamientos." },
-  { num: "03", tag: "Optimizar", cond: "Si podemos predecir comportamientos,", cons: "podemos optimizar decisiones." },
-  { num: "04", tag: "Servir", cond: "Y si podemos optimizar decisiones,", cons: "podemos poner la inteligencia al servicio de las personas." },
+  { headline: <>No comenzamos por la tecnología.<br />Comenzamos por comprender.</> },
+  { num: "01", tag: "Observar", cond: "Si observamos con precisión,", cons: "comprendemos lo que realmente ocurre." },
+  { num: "02", tag: "Comprender", cond: "Si comprendemos con criterio,", cons: "podemos decidir con responsabilidad." },
+  { num: "03", tag: "Decidir", cond: "Si decidimos con responsabilidad,", cons: "actuamos con eficiencia." },
+  { num: "04", tag: "Actuar", cond: "Y si actuamos con eficiencia,", cons: "hacemos mejor lo que realmente importa." },
   { empty: true },
 ];
 
-export default function KoraManifiesto() {
+export default function Manifiesto() {
   const rootRef = useRef(null);
   const netRef = useRef(null);
   const finaleRef = useRef(null);
@@ -64,7 +60,7 @@ export default function KoraManifiesto() {
 
       const cx = W * 0.72, cy = H * 0.235, rx = Math.min(W * 0.26, 320), ry = Math.min(H * 0.2, 260);
       clx = cx; cly = cy; clr = Math.max(rx, ry);
-      const N = Math.round(Math.max(26, Math.min(40, (W * H) / 26000)));
+      const N = Math.round(Math.max(22, Math.min(34, (W * H) / 30000)));
       neurons = [];
       let tries = 0;
       while (neurons.length < N && tries < N * 60) {
@@ -100,9 +96,9 @@ export default function KoraManifiesto() {
 
     function fire(i, now, gen) {
       const n = neurons[i]; n.act = 1; n.litAt = now;
-      if (gen > 3 || signals.length > 44) return;
-      const p = scene >= 3 ? 0.55 : scene >= 2 ? 0.4 : 0.25;
-      for (const nb of n.nb) { if (!vE(edges[nb.e])) continue; if (Math.random() < p) signals.push({ a: i, b: nb.o, t: 0, sp: 1.6 + Math.random() * 1.2, gen: gen + 1 }); }
+      if (gen > 3 || signals.length > 40) return;
+      const p = scene >= 3 ? 0.5 : scene >= 2 ? 0.38 : 0.24;
+      for (const nb of n.nb) { if (!vE(edges[nb.e])) continue; if (Math.random() < p) signals.push({ a: i, b: nb.o, t: 0, sp: 1.5 + Math.random() * 1.1, gen: gen + 1 }); }
     }
     function seedSignal(now) { const vis = neurons.map((n, i) => i).filter(vN); if (vis.length < 2) return; fire(vis[(Math.random() * vis.length) | 0], now, 0); }
     function spawnMote() {
@@ -178,45 +174,48 @@ export default function KoraManifiesto() {
         const a = neurons[e.a], b = neurons[e.b];
         const heat = Math.min(1, (a.act + b.act) * 0.9);
         const strong = e.opt && scene >= 3;
-        let base = (1 - e.len / (maxLen * 1.05)) * 0.14; if (strong) base += 0.14;
-        const col = heat > 0.05 || strong;
-        ctx.strokeStyle = col ? `rgba(55,236,189,${Math.min(0.7, base + heat * 0.5 + (strong ? 0.18 : 0))})` : `rgba(120,150,160,${base * 0.5})`;
-        ctx.lineWidth = strong ? 1.6 : 0.8 + heat;
+        let base = (1 - e.len / (maxLen * 1.05)) * 0.22; if (strong) base += 0.12;
+        if (heat > 0.05 || strong) {
+          ctx.strokeStyle = `rgba(167,68,44,${Math.min(0.72, base + heat * 0.5 + (strong ? 0.16 : 0))})`;
+        } else {
+          ctx.strokeStyle = `rgba(48,58,54,${base * 0.6})`;
+        }
+        ctx.lineWidth = strong ? 1.5 : 0.8 + heat;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
       for (const s of signals) {
         const a = neurons[s.a], b = neurons[s.b];
         const x = a.x + (b.x - a.x) * s.t, y = a.y + (b.y - a.y) * s.t;
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fillStyle = "rgba(150,255,225,.95)";
-        ctx.shadowColor = "rgba(55,236,189,.9)"; ctx.shadowBlur = 10; ctx.fill(); ctx.shadowBlur = 0;
+        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fillStyle = "rgba(167,68,44,.95)";
+        ctx.shadowColor = "rgba(167,68,44,.55)"; ctx.shadowBlur = 8; ctx.fill(); ctx.shadowBlur = 0;
       }
       for (const n of neurons) {
         if (n.thr > growth) continue;
         let a = n.act;
-        if (unison) a = Math.max(a, 0.35 + 0.32 * Math.sin(now / 620 + n.ph));
+        if (unison) a = Math.max(a, 0.3 + 0.3 * Math.sin(now / 620 + n.ph));
         if (a > 0.05) {
-          const rr = 2.4 + 5.5 * a;
+          const rr = 2.4 + 5 * a;
           const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, rr);
-          g.addColorStop(0, `rgba(150,255,225,${0.9 * Math.min(1, a + 0.2)})`); g.addColorStop(1, "rgba(55,236,189,0)");
+          g.addColorStop(0, `rgba(167,68,44,${0.85 * Math.min(1, a + 0.2)})`); g.addColorStop(1, "rgba(167,68,44,0)");
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, rr, 0, 7); ctx.fill();
-        } else { ctx.fillStyle = "rgba(150,178,188,.30)"; ctx.beginPath(); ctx.arc(n.x, n.y, 1.6, 0, 7); ctx.fill(); }
+        } else { ctx.fillStyle = "rgba(48,58,54,.30)"; ctx.beginPath(); ctx.arc(n.x, n.y, 1.6, 0, 7); ctx.fill(); }
       }
-      for (const m of motes) { ctx.beginPath(); ctx.arc(m.x, m.y, 1.8, 0, 7); ctx.fillStyle = `rgba(120,220,200,${0.5 * m.life + 0.2})`; ctx.fill(); }
+      for (const m of motes) { ctx.beginPath(); ctx.arc(m.x, m.y, 1.8, 0, 7); ctx.fillStyle = `rgba(72,102,88,${0.5 * m.life + 0.2})`; ctx.fill(); }
 
       if (scene === FINALE) {
         const prog = Math.min(1, tScene / 1300);
         const rad = Math.max(W, H) * (0.18 + 0.32 * prog);
         const g = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, rad);
-        g.addColorStop(0, `rgba(55,236,189,${0.16 * prog})`); g.addColorStop(1, "rgba(55,236,189,0)");
+        g.addColorStop(0, `rgba(167,68,44,${0.13 * prog})`); g.addColorStop(1, "rgba(167,68,44,0)");
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(W / 2, H / 2, rad, 0, 7); ctx.fill();
       }
       for (const s of shocks) {
         if (s.delay > 0) continue;
         ctx.beginPath(); ctx.arc(clx, cly, s.r, 0, 7);
-        ctx.strokeStyle = `rgba(55,236,189,${0.55 * s.life})`; ctx.lineWidth = 2.5 * s.life + 0.5;
-        ctx.shadowColor = "rgba(55,236,189,.8)"; ctx.shadowBlur = 16 * s.life; ctx.stroke(); ctx.shadowBlur = 0;
+        ctx.strokeStyle = `rgba(167,68,44,${0.5 * s.life})`; ctx.lineWidth = 2.5 * s.life + 0.5;
+        ctx.shadowColor = "rgba(167,68,44,.6)"; ctx.shadowBlur = 14 * s.life; ctx.stroke(); ctx.shadowBlur = 0;
       }
-      if (flash > 0) { ctx.fillStyle = `rgba(120,236,205,${flash * 0.15})`; ctx.fillRect(0, 0, W, H); }
+      if (flash > 0) { ctx.fillStyle = `rgba(167,68,44,${flash * 0.07})`; ctx.fillRect(0, 0, W, H); }
 
       raf = requestAnimationFrame(tick);
     }
@@ -249,16 +248,9 @@ export default function KoraManifiesto() {
   }, []);
 
   return (
-    <section ref={rootRef} className="kora-manifesto">
+    <section ref={rootRef} className="rk-manifesto" id="manifiesto">
       <canvas ref={netRef} className="net" aria-hidden="true" />
       <div className="scrim" aria-hidden="true" />
-
-      <div className="brand" aria-hidden="true">
-        <svg className="mark" viewBox="0 0 40 40" fill="none">
-          <path d="M20 3 L37 20 L20 37 L3 20 Z" stroke="#17c39a" strokeWidth="2.4" />
-          <circle className="core" cx="20" cy="20" r="4.6" fill="#37ecbd" />
-        </svg>
-      </div>
 
       <div className="stage">
         {SCENES.map((s, i) =>
@@ -280,11 +272,11 @@ export default function KoraManifiesto() {
 
       <div className="finale" ref={finaleRef} aria-hidden="true">
         <svg className="fmark" viewBox="0 0 40 40" fill="none">
-          <path d="M20 2 L38 20 L20 38 L2 20 Z" stroke="#37ecbd" strokeWidth="2" />
-          <circle cx="20" cy="20" r="5" fill="#37ecbd" />
+          <path d="M20 2 L38 20 L20 38 L2 20 Z" fill="#a7442c" />
+          <path d="M20 11 L29 20 L20 29 L11 20 Z" fill="none" stroke="#faf7f0" strokeWidth="2.2" />
         </svg>
-        <div className="fword">KORA</div>
-        <div className="ftag">Al servicio de las personas</div>
+        <div className="fword">RINOKU</div>
+        <div className="ftag">Información confiable. Decisiones eficientes.</div>
       </div>
 
       <div className="timeline" ref={timelineRef}>
@@ -295,65 +287,58 @@ export default function KoraManifiesto() {
       <button className="ctrl" ref={ctrlRef} aria-label="Pausar o reanudar" />
 
       <style jsx>{`
-        .kora-manifesto {
-          --muted:#565f68; --bright:#f3f6f7; --teal:#17c39a; --teal-hi:#37ecbd;
+        .rk-manifesto {
+          --muted:#5b625d; --ink:#252c29; --graphite:#303a36; --terra:#a7442c; --terra-hi:#8e3726; --line:#d3c9b9;
           position:relative; height:100vh; min-height:560px; overflow:hidden;
-          background:#080a0b; color:var(--bright);
-          font-family:"Space Grotesk", system-ui, -apple-system, sans-serif; -webkit-font-smoothing:antialiased;
+          background:#faf7f0; color:var(--ink);
+          font-family:"IBM Plex Sans", system-ui, -apple-system, sans-serif; -webkit-font-smoothing:antialiased;
         }
-        .kora-manifesto :global(*) { box-sizing:border-box; }
+        .rk-manifesto :global(*) { box-sizing:border-box; }
 
         .net { position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block; }
         .scrim { position:absolute; inset:0; z-index:1; pointer-events:none;
-          background:radial-gradient(120% 85% at 28% 82%, rgba(6,8,9,.5), transparent 62%); }
+          background:radial-gradient(120% 85% at 28% 85%, rgba(250,247,240,.55), transparent 60%); }
 
-        .brand { position:absolute; top:0; left:0; z-index:6; padding:1.15rem 1.5rem; }
-        .mark { width:24px; height:24px; display:block; filter:drop-shadow(0 0 8px rgba(23,195,154,.45)); }
-        .core { animation:beat 3.4s ease-in-out infinite; }
-        @keyframes beat { 0%,100%{opacity:.55} 50%{opacity:1} }
-
-        .stage { position:relative; z-index:2; height:100%; max-width:900px; margin:0 auto; }
-        .scene { position:absolute; left:1.7rem; right:1.7rem; bottom:15vh; max-width:23ch;
+        .stage { position:relative; z-index:2; height:100%; max-width:980px; margin:0 auto; }
+        .scene { position:absolute; left:1.9rem; right:1.9rem; bottom:16vh; max-width:24ch;
           opacity:0; transform:translateY(26px);
           transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); pointer-events:none; }
         .scene.active { opacity:1; transform:none; }
 
-        .headline { font-size:clamp(2.1rem,8.4vw,3.2rem); font-weight:600; line-height:1.06; }
-        .tag { font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.26em; text-transform:uppercase;
-          color:var(--teal); display:flex; align-items:baseline; gap:.85rem; margin-bottom:1.2rem; }
+        .headline { font-family:"Archivo Black","Archivo",sans-serif; font-size:clamp(2rem,7.4vw,3rem); line-height:1.08; letter-spacing:-0.025em; color:var(--graphite); max-width:20ch; }
+        .tag { font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+          color:var(--terra); display:flex; align-items:baseline; gap:.85rem; margin-bottom:1.1rem; }
         .tag .num { color:var(--muted); }
-        .cond { display:block; color:var(--muted); font-weight:400; font-size:clamp(1.55rem,6vw,2.35rem); line-height:1.13; }
-        .cons { display:block; color:var(--bright); font-weight:500; font-size:clamp(1.8rem,6.8vw,2.8rem); line-height:1.13; margin-top:.1em; }
+        .cond { display:block; color:var(--muted); font-weight:400; font-size:clamp(1.4rem,5vw,2.1rem); line-height:1.16; }
+        .cons { display:block; color:var(--graphite); font-weight:600; font-size:clamp(1.6rem,5.8vw,2.5rem); line-height:1.16; margin-top:.12em; }
 
-        .timeline { position:absolute; left:1.7rem; right:1.7rem; bottom:6.5vh; z-index:5; display:flex; gap:6px; }
-        .timeline .seg { flex:1; height:2px; background:#222a30; border-radius:2px; overflow:hidden; }
-        .timeline .seg i { display:block; height:100%; width:0; background:var(--teal); box-shadow:0 0 8px var(--teal-hi); }
+        .timeline { position:absolute; left:1.9rem; right:1.9rem; bottom:6.5vh; z-index:5; display:flex; gap:6px; }
+        .timeline .seg { flex:1; height:3px; background:var(--line); border-radius:2px; overflow:hidden; }
+        .timeline .seg i { display:block; height:100%; width:0; background:var(--terra); }
         .timeline .seg.done i { width:100%; }
 
-        .ctrl { position:absolute; right:1.4rem; bottom:5.4vh; z-index:6; width:34px; height:34px; border-radius:50%;
-          border:1px solid #2b343b; background:rgba(12,15,17,.6); color:var(--bright); cursor:pointer;
+        .ctrl { position:absolute; right:1.6rem; bottom:5.2vh; z-index:6; width:34px; height:34px; border-radius:50%;
+          border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--graphite); cursor:pointer;
           display:grid; place-items:center; transition:border-color .3s, transform .15s; }
-        .ctrl:hover { border-color:var(--teal); }
+        .ctrl:hover { border-color:var(--terra); }
         .ctrl:active { transform:scale(.92); }
-        .ctrl :global(svg) { width:14px; height:14px; fill:var(--bright); }
+        .ctrl :global(svg) { width:14px; height:14px; fill:var(--graphite); }
 
         .finale { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column;
-          align-items:center; justify-content:center; gap:.6rem; pointer-events:none;
-          opacity:0; transform:scale(.86); filter:blur(6px);
+          align-items:center; justify-content:center; gap:.7rem; pointer-events:none;
+          opacity:0; transform:scale(.88); filter:blur(5px);
           transition:opacity 1.1s ease, transform 1.4s cubic-bezier(.16,1,.3,1), filter 1.1s ease; }
         .finale.show { opacity:1; transform:scale(1); filter:blur(0); }
-        .fmark { width:64px; height:64px; filter:drop-shadow(0 0 22px rgba(55,236,189,.8)); }
-        .fword { font-weight:700; font-size:clamp(2.6rem,12vw,4.4rem); letter-spacing:.32em; padding-left:.32em;
-          text-shadow:0 0 30px rgba(55,236,189,.55); }
-        .ftag { font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.34em;
-          text-transform:uppercase; color:var(--teal); opacity:.9; }
+        .fmark { width:58px; height:58px; filter:drop-shadow(0 6px 16px rgba(167,68,44,.25)); }
+        .fword { font-family:"Archivo Black","Archivo",sans-serif; font-size:clamp(2.4rem,11vw,4rem); letter-spacing:-0.02em; color:var(--graphite); }
+        .ftag { font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.18em;
+          text-transform:uppercase; color:var(--terra); }
 
-        .kora-manifesto.reduced { height:auto; overflow:visible; }
-        .kora-manifesto.reduced .stage { height:auto; padding:22vh 0 12vh; }
-        .kora-manifesto.reduced .scene { position:static; left:auto; right:auto; bottom:auto;
-          opacity:1; transform:none; margin:0 1.7rem 2.6rem; max-width:24ch; }
-        .kora-manifesto.reduced .timeline, .kora-manifesto.reduced .ctrl { display:none; }
-        .kora-manifesto.reduced .core { animation:none; opacity:1; }
+        .rk-manifesto.reduced { height:auto; overflow:visible; }
+        .rk-manifesto.reduced .stage { height:auto; padding:22vh 0 12vh; }
+        .rk-manifesto.reduced .scene { position:static; left:auto; right:auto; bottom:auto;
+          opacity:1; transform:none; margin:0 1.9rem 2.6rem; max-width:26ch; }
+        .rk-manifesto.reduced .timeline, .rk-manifesto.reduced .ctrl { display:none; }
       `}</style>
     </section>
   );

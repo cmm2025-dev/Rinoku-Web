@@ -2,59 +2,101 @@ import Reveal from "../Reveal";
 
 const SOLUTIONS = [
   {
-    name: "KORA Vigía",
-    tagline: "La presencia que el tribunal ordenó, verificada.",
+    name: "RINOKU CAD",
+    focus: "Operación y respuesta",
     description:
-      "Infraestructura de confianza judicial para arresto domiciliario: verifica presencia biométrica en los horarios que decreta el tribunal y produce evidencia con cadena de custodia de extremo a extremo.",
-    href: "https://kora-vigia.vercel.app",
+      "Coordinación, despacho y gestión de eventos para operaciones que exigen respuesta oportuna y trazable.",
+    href: null,
+    status: "En desarrollo",
   },
   {
-    name: "KORA SFI",
-    tagline: "La certeza de estar.",
+    name: "RINOKU SFI",
+    focus: "Identidad y evidencia",
     description:
-      "Sistema de Fiscalización Inteligente para licencias médicas, arresto domiciliario y medidas de protección: verificación biométrica autónoma, sin smartphone ni supervisión humana constante.",
+      "Verificación de identidad y presencia mediante soluciones biométricas, con registro verificable.",
     href: "https://sfi-rispa.vercel.app",
+    status: "Ver solución",
+  },
+  {
+    name: "RINOKU VIGÍA",
+    focus: "Control y registro",
+    description:
+      "Seguimiento, verificación y trazabilidad para escenarios de vigilancia y cumplimiento.",
+    href: "https://kora-vigia.vercel.app",
+    status: "Ver solución",
+  },
+  {
+    name: "RINOKU IoT",
+    focus: "Captura y conectividad",
+    description:
+      "Conexión de sensores, dispositivos y eventos del entorno físico como base de captura.",
+    href: null,
+    status: "En desarrollo",
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="soluciones" className="border-t border-kora-border px-6 py-32">
-      <div className="mx-auto max-w-4xl">
+    <section id="soluciones" className="border-t border-rk-line px-6 py-28">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-kora-teal">
-            Soluciones
-          </p>
-          <h2 className="mt-4 max-w-xl text-2xl font-semibold text-white sm:text-3xl">
-            Infraestructura compartida, soluciones específicas.
+          <p className="rk-eyebrow text-[13px] text-rk-terracotta">Soluciones</p>
+          <h2 className="mt-5 max-w-2xl text-3xl text-rk-graphite sm:text-4xl">
+            Una misma filosofía. Soluciones para realidades distintas.
           </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-rk-muted">
+            Identidad, operaciones, verificación y conexión con el entorno,
+            concebidas para trabajar con rigor y crecer de forma modular.
+          </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {SOLUTIONS.map((solution, i) => (
-            <Reveal key={solution.name} delay={i * 0.1}>
-              <a
-                href={solution.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-md border border-kora-border bg-kora-panel p-8 transition-colors hover:border-kora-teal"
-              >
-                <span className="font-mono text-xs uppercase tracking-[0.15em] text-kora-muted">
-                  {solution.name}
-                </span>
-                <p className="mt-4 text-lg font-medium text-white">
-                  {solution.tagline}
-                </p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-kora-text">
-                  {solution.description}
-                </p>
-                <span className="mt-6 text-xs uppercase tracking-[0.15em] text-kora-teal transition-colors group-hover:text-white">
-                  Visitar →
-                </span>
-              </a>
-            </Reveal>
-          ))}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          {SOLUTIONS.map((s, i) => {
+            const Card = s.href ? "a" : "div";
+            return (
+              <Reveal key={s.name} delay={(i % 2) * 0.1}>
+                <Card
+                  {...(s.href
+                    ? { href: s.href, target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className={`group flex h-full flex-col rounded-xl border border-rk-line bg-rk-paper p-7 transition-colors ${
+                    s.href ? "hover:border-rk-terracotta" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-xl text-rk-graphite">
+                      {s.name}
+                    </span>
+                    <span className="rk-eyebrow text-[10px] text-rk-green-deep">
+                      {s.focus}
+                    </span>
+                  </div>
+                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-rk-muted">
+                    {s.description}
+                  </p>
+                  <span
+                    className={`rk-eyebrow mt-6 text-[11px] ${
+                      s.href
+                        ? "text-rk-terracotta group-hover:text-rk-terracotta-deep"
+                        : "text-rk-muted"
+                    }`}
+                  >
+                    {s.status}
+                    {s.href ? " →" : ""}
+                  </span>
+                </Card>
+              </Reveal>
+            );
+          })}
         </div>
+
+        <Reveal delay={0.3}>
+          <p className="mt-8 max-w-2xl text-[13px] leading-relaxed text-rk-muted">
+            Estas definiciones son mensajes de posicionamiento. No implican que
+            todas las funcionalidades estén desarrolladas, certificadas o
+            disponibles comercialmente.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
