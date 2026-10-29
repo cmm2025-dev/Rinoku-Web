@@ -5,8 +5,8 @@ const CHANNELS = [
     label: "Contacto comercial",
     description:
       "Conversemos sobre tu operación, un piloto o una integración a medida.",
-    email: "contacto@rinoku.cl",
-    cta: "Escribir a contacto",
+    email: "gerencia@rinoku.cl",
+    cta: "Escribir a comercial",
   },
   {
     label: "Soporte",

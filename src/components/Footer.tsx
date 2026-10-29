@@ -18,10 +18,10 @@ export default function Footer() {
             © 2026 RINOKU. Identidad en desarrollo.
           </p>
           <a
-            href="mailto:contacto@rinoku.cl"
+            href="mailto:info@rinoku.cl"
             className="text-[13px] text-rk-ivory/70 transition-colors hover:text-rk-ivory"
           >
-            contacto@rinoku.cl
+            info@rinoku.cl
           </a>
         </div>
       </div>
