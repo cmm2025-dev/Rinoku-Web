@@ -2,6 +2,22 @@ import Reveal from "../Reveal";
 
 const SOLUTIONS = [
   {
+    name: "RINOKU VIGÍA",
+    focus: "Control y registro",
+    description:
+      "Seguimiento, verificación y trazabilidad para escenarios de vigilancia y cumplimiento.",
+    href: "https://rinoku-vigia.vercel.app",
+    status: "Ver solución",
+  },
+  {
+    name: "RINOKU SFI",
+    focus: "Identidad y evidencia",
+    description:
+      "Verificación de identidad y presencia mediante soluciones biométricas, con registro verificable.",
+    href: "https://rinoku-sfi.vercel.app",
+    status: "Ver solución",
+  },
+  {
     name: "RINOKU CAD",
     focus: "Operación y respuesta",
     description:
@@ -10,26 +26,10 @@ const SOLUTIONS = [
     status: "En desarrollo",
   },
   {
-    name: "RINOKU SFI",
-    focus: "Identidad y evidencia",
+    name: "RINOKU Alertas",
+    focus: "Monitoreo y notificación",
     description:
-      "Verificación de identidad y presencia mediante soluciones biométricas, con registro verificable.",
-    href: "https://sfi-rispa.vercel.app",
-    status: "Ver solución",
-  },
-  {
-    name: "RINOKU VIGÍA",
-    focus: "Control y registro",
-    description:
-      "Seguimiento, verificación y trazabilidad para escenarios de vigilancia y cumplimiento.",
-    href: "https://kora-vigia.vercel.app",
-    status: "Ver solución",
-  },
-  {
-    name: "RINOKU IoT",
-    focus: "Captura y conectividad",
-    description:
-      "Conexión de sensores, dispositivos y eventos del entorno físico como base de captura.",
+      "Detección y notificación de eventos en tiempo real, con escalamiento y registro trazable.",
     href: null,
     status: "En desarrollo",
   },
