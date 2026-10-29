@@ -6,7 +6,7 @@ const SOLUTIONS = [
     focus: "Control y registro",
     description:
       "Seguimiento, verificación y trazabilidad para escenarios de vigilancia y cumplimiento.",
-    href: "https://rinoku-vigia.vercel.app",
+    href: "https://vigia.rinoku.cl",
     status: "Ver solución",
   },
   {
@@ -14,7 +14,7 @@ const SOLUTIONS = [
     focus: "Identidad y evidencia",
     description:
       "Verificación de identidad y presencia mediante soluciones biométricas, con registro verificable.",
-    href: "https://rinoku-sfi.vercel.app",
+    href: "https://sfi.rinoku.cl",
     status: "Ver solución",
   },
   {
