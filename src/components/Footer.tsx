@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-4 border-t border-rk-ivory/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="rk-eyebrow text-[11px] text-rk-ivory/50">
-            © 2026 RINOKU. Identidad en desarrollo.
+            © 2026 RINOKU.
           </p>
           <a
             href="mailto:info@rinoku.cl"
