@@ -89,14 +89,6 @@ export default function Solutions() {
             );
           })}
         </div>
-
-        <Reveal delay={0.3}>
-          <p className="mt-8 max-w-2xl text-[13px] leading-relaxed text-rk-muted">
-            Estas definiciones son mensajes de posicionamiento. No implican que
-            todas las funcionalidades estén desarrolladas, certificadas o
-            disponibles comercialmente.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
