@@ -26,6 +26,13 @@ const SOLUTIONS = [
     status: "Ver solución",
   },
   {
+    name: "RINOKU RECUPERATE",
+    focus: "Cumplimiento y recuperación",
+    description:
+      "Apoya el buen uso del reposo médico y del seguro de salud. Fiscalización de cumplimiento para instituciones públicas que convierte alertas en casos gestionados —priorización explicable, diligencias en terreno y evidencia trazable— para que los recursos se traduzcan en mejores prestaciones y menores tiempos de espera. La decisión siempre la toma un profesional humano, con fundamento escrito.",
+    status: "Nueva línea · Próximamente",
+  },
+  {
     name: "RINOKU Alertas",
     focus: "Monitoreo y notificación",
     description:
